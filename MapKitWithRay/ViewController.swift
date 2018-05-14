@@ -23,10 +23,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Choose an Address"
         myMap.delegate = self
         setUpLocation()
         pinConstrain()
-   
+        
     }
     
     func pinConstrain() {
@@ -41,18 +43,13 @@ class ViewController: UIViewController {
         // Current location is sears tower Chicago :)
         currentLocation = CLLocation(latitude: 41.878876, longitude: -87.635915)
         
-        let regionRedius:CLLocationDistance = 100.0
+        let regionRedius:CLLocationDistance = 300.0
         let region = MKCoordinateRegionMakeWithDistance((currentLocation?.coordinate)!, regionRedius, regionRedius)
          myMap.showsUserLocation = true
         myMap.setRegion(region, animated: true)
         
         showAddressLabel(address: currentLocation!)
         
-        // Annotation
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)
-      
         locationManager = CLLocationManager()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.delegate = self
@@ -88,10 +85,22 @@ class ViewController: UIViewController {
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // I am not sure which code I should write here
         }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        if let clError = error as? CLError {
+            switch clError {
+            case CLError.locationUnknown:
+                print("Location unknown")
+            case CLError.denied:
+                print("Access denied")
+            default:
+                print("Location Error")
+            }
+        } else {
+            print("Error:",error.localizedDescription)
+        }
             }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
