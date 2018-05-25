@@ -24,12 +24,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Choose an Address"
+        
         myMap.delegate = self
         setUpLocation()
         pinConstrain()
+        goBackToMap()
+    }
+    
+    func goBackToMap() {
+             //   navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav-address")
+          //     navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav-address")
+        let backImage = UIImage(named: "nav-address")
+        navigationItem.backBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: nil, action: #selector(backButton))
         
     }
+    
+    @objc func backButton() {
+        
+    }
+    
     
     func pinConstrain() {
         pinImage.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +56,7 @@ class ViewController: UIViewController {
         // Current location is sears tower Chicago :)
         currentLocation = CLLocation(latitude: 41.878876, longitude: -87.635915)
         
-        let regionRedius:CLLocationDistance = 300.0
+        let regionRedius:CLLocationDistance = 600.0
         let region = MKCoordinateRegionMakeWithDistance((currentLocation?.coordinate)!, regionRedius, regionRedius)
          myMap.showsUserLocation = true
         myMap.setRegion(region, animated: true)
