@@ -300,6 +300,7 @@
                         <outlet property="deliveryTimeLabel" destination="ayH-sV-Kft" id="Aqi-BO-tMM"/>
                         <outlet property="favoriteButton" destination="e3O-WC-rLP" id="472-Vz-t7G"/>
                         <outlet property="logoImage" destination="p14-hj-c2F" id="Qvz-zy-fvC"/>
+                        <outlet property="myTableView" destination="ESL-Hj-EYs" id="GlS-nm-beg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPp-eD-cr6" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // navigationController?.navigationBar.prefersLargeTitles = true
+       
         
         myMap.delegate = self
         setUpLocation()

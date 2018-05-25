@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class RestaurantInfo {
-    
+    let id: Int?
     let restName: String?
     let restType: String?
     let deliveryCharge: Double?
@@ -18,6 +18,8 @@ class RestaurantInfo {
     let time: Int?
     let tags: [String]?
     init(dict: JSON) {
+        let restID = dict["id"].intValue
+        self.id = restID
         let description = dict["description"].stringValue
         self.restType = description
         let business = dict["business"].dictionaryObject

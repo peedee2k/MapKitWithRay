@@ -68,7 +68,7 @@ class SearchResultController: UIViewController {
                 DispatchQueue.main.async {
                     self.myTableView.reloadData()
                 }
-                //self.myTableView.reloadData()
+                
             
                 
                 
@@ -115,13 +115,7 @@ extension SearchResultController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       // menu.removeAll()
-        
-//        guard let cell = dataArray[indexPath.row].tags else { return }
-//        for i in cell {
-//            menu.append(i)
-//
-//        }
+       
        
         performSegue(withIdentifier: "detailVC", sender: self)
     }
