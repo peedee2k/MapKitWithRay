@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Choose an address-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapKitWithRay" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,7 +39,7 @@
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="GIJ-Yg-Xcs" kind="show" id="j2N-Tb-dyj"/>
+                                            <segue destination="GIJ-Yg-Xcs" kind="show" id="2Dm-QI-gMU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -67,7 +67,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3pZ-Wb-Qph"/>
+                    <navigationItem key="navigationItem" title="Choose an address" id="3pZ-Wb-Qph"/>
                     <connections>
                         <outlet property="addressLabel" destination="c6J-jz-MVw" id="vBQ-S6-3eo"/>
                         <outlet property="myMap" destination="1PL-rz-bej" id="peO-3W-r8j"/>
@@ -76,9 +76,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="68"/>
+            <point key="canvasLocation" x="975" y="68"/>
         </scene>
-        <!--Search Result Controller-->
+        <!--Item-->
         <scene sceneID="lD4-fC-vAe">
             <objects>
                 <viewController id="GIJ-Yg-Xcs" customClass="SearchResultController" customModule="MapKitWithRay" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,14 +86,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Noh-3y-TtU">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="axq-xD-Qw9"/>
-                                    <tabBarItem systemItem="more" id="Rqj-ti-0zh"/>
-                                </items>
-                            </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-de-ZjY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,7 +98,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OQ8-V0-arK">
-                                                    <rect key="frame" x="15" y="15" width="100" height="57.5"/>
+                                                    <rect key="frame" x="15" y="15" width="100" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="RMG-cT-xEQ"/>
                                                     </constraints>
@@ -121,13 +113,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2lq-8b-daA">
-                                                    <rect key="frame" x="130" y="38" width="235" height="11.5"/>
+                                                    <rect key="frame" x="130" y="38" width="235" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSK-61-xjp">
-                                                    <rect key="frame" x="130" y="54.5" width="100" height="18"/>
+                                                    <rect key="frame" x="130" y="55" width="100" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="dQq-Tm-Ebe"/>
                                                     </constraints>
@@ -136,7 +128,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="032-Kp-98T">
-                                                    <rect key="frame" x="280" y="54.5" width="80" height="17.5"/>
+                                                    <rect key="frame" x="280" y="55" width="80" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -175,20 +167,32 @@
                                     <outlet property="delegate" destination="GIJ-Yg-Xcs" id="QD1-vj-SLX"/>
                                 </connections>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-1C-S4C">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="EOJ-pA-J8x"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="Explore" image="tab-explore" id="x34-Ut-vgg"/>
+                                    <tabBarItem title="Favorites" image="tab-star" id="J8S-WG-0e8"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.98823529409999999" green="0.12941176469999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Noh-3y-TtU" firstAttribute="top" secondItem="oWQ-de-ZjY" secondAttribute="bottom" id="7GG-hB-0gB"/>
                             <constraint firstItem="oWQ-de-ZjY" firstAttribute="leading" secondItem="6cz-Wb-UWR" secondAttribute="leading" id="7bp-68-Sby"/>
+                            <constraint firstItem="Nv9-1C-S4C" firstAttribute="bottom" secondItem="6cz-Wb-UWR" secondAttribute="bottom" id="8Sa-GT-Occ"/>
                             <constraint firstItem="oWQ-de-ZjY" firstAttribute="top" secondItem="6cz-Wb-UWR" secondAttribute="top" id="LVk-ZA-Z23"/>
                             <constraint firstItem="oWQ-de-ZjY" firstAttribute="trailing" secondItem="6cz-Wb-UWR" secondAttribute="trailing" id="Owd-4h-MZs"/>
-                            <constraint firstItem="Noh-3y-TtU" firstAttribute="bottom" secondItem="6cz-Wb-UWR" secondAttribute="bottom" id="jDI-9f-ufC"/>
-                            <constraint firstItem="Noh-3y-TtU" firstAttribute="trailing" secondItem="oWQ-de-ZjY" secondAttribute="trailing" id="oOP-Ga-rE0"/>
-                            <constraint firstItem="Noh-3y-TtU" firstAttribute="leading" secondItem="oWQ-de-ZjY" secondAttribute="leading" id="qZO-JU-30V"/>
+                            <constraint firstItem="Nv9-1C-S4C" firstAttribute="top" secondItem="oWQ-de-ZjY" secondAttribute="bottom" id="W7F-st-9Ko"/>
+                            <constraint firstItem="oWQ-de-ZjY" firstAttribute="leading" secondItem="Nv9-1C-S4C" secondAttribute="leading" id="fdC-P0-3zl"/>
+                            <constraint firstItem="oWQ-de-ZjY" firstAttribute="trailing" secondItem="Nv9-1C-S4C" secondAttribute="trailing" id="xU7-5s-eMk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6cz-Wb-UWR"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="uJU-Dx-KgG"/>
                     <connections>
                         <outlet property="myTableView" destination="oWQ-de-ZjY" id="s4k-to-baI"/>
                         <segue destination="BK8-c4-O0Q" kind="show" identifier="detailVC" id="NPg-s3-91u"/>
@@ -196,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrK-uI-QWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="68"/>
+            <point key="canvasLocation" x="1932" y="68"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="rR1-UR-ZXY">
@@ -225,11 +229,11 @@
                                 <rect key="frame" x="5" y="340" width="365" height="278"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShowMenu" id="B2y-By-vkM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShowMenu" id="B2y-By-vkM">
                                         <rect key="frame" x="0.0" y="28" width="365" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B2y-By-vkM" id="UTD-dY-8a8">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="332" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -239,17 +243,6 @@
                                     <outlet property="delegate" destination="BK8-c4-O0Q" id="6WV-Bi-cej"/>
                                 </connections>
                             </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHn-R1-igJ">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="r88-ul-ZeA"/>
-                                </constraints>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="3qA-vV-vkQ"/>
-                                    <tabBarItem systemItem="more" id="Szp-H9-EAs"/>
-                                </items>
-                            </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bp-SQ-V8o">
                                 <rect key="frame" x="16" y="305" width="43" height="21"/>
                                 <constraints>
@@ -259,23 +252,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3O-WC-rLP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3O-WC-rLP">
                                 <rect key="frame" x="67" y="241" width="240" height="45"/>
-                                <color key="backgroundColor" red="0.98823529409999999" green="0.12941176469999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="oHE-n3-SVn"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="75" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Favorite" image="star-white">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add to Favorite">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.12941176469999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="favoriteBtnTapped:" destination="BK8-c4-O0Q" eventType="touchUpInside" id="kPS-kd-1D3"/>
+                                </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY3-uH-Pm6">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="L0N-RM-76b"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="Explore" image="tab-explore" id="axB-2X-7PP"/>
+                                    <tabBarItem title="Favorites" image="tab-star" id="IyI-CA-MD8"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NXL-B9-S7u" firstAttribute="bottom" secondItem="OHn-R1-igJ" secondAttribute="bottom" id="0bz-wk-MVU"/>
                             <constraint firstItem="ESL-Hj-EYs" firstAttribute="top" secondItem="1Bp-SQ-V8o" secondAttribute="bottom" constant="14" id="0h5-Xm-dYh"/>
+                            <constraint firstItem="VY3-uH-Pm6" firstAttribute="top" secondItem="ESL-Hj-EYs" secondAttribute="bottom" id="7IX-MB-o92"/>
                             <constraint firstItem="ESL-Hj-EYs" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" constant="5" id="Gzl-aB-Z5v"/>
                             <constraint firstItem="ayH-sV-Kft" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" constant="67" id="Hv1-0j-Afo"/>
                             <constraint firstItem="NXL-B9-S7u" firstAttribute="trailing" secondItem="e3O-WC-rLP" secondAttribute="trailing" constant="68" id="PZy-Rg-8lK"/>
@@ -287,12 +293,12 @@
                             <constraint firstItem="p14-hj-c2F" firstAttribute="top" secondItem="NXL-B9-S7u" secondAttribute="top" constant="10" id="ehB-82-Kqq"/>
                             <constraint firstItem="e3O-WC-rLP" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" constant="67" id="g8W-2N-PJd"/>
                             <constraint firstItem="p14-hj-c2F" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" constant="67" id="hMo-pl-fmJ"/>
-                            <constraint firstItem="OHn-R1-igJ" firstAttribute="top" secondItem="ESL-Hj-EYs" secondAttribute="bottom" id="kCc-F5-Eo5"/>
                             <constraint firstItem="1Bp-SQ-V8o" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" constant="16" id="kln-4y-Zw8"/>
                             <constraint firstItem="e3O-WC-rLP" firstAttribute="top" secondItem="ayH-sV-Kft" secondAttribute="bottom" constant="15" id="l3U-fr-ICN"/>
-                            <constraint firstItem="OHn-R1-igJ" firstAttribute="leading" secondItem="NXL-B9-S7u" secondAttribute="leading" id="trg-q6-u5H"/>
+                            <constraint firstItem="ESL-Hj-EYs" firstAttribute="centerX" secondItem="VY3-uH-Pm6" secondAttribute="centerX" id="no2-k1-gQc"/>
+                            <constraint firstItem="VY3-uH-Pm6" firstAttribute="bottom" secondItem="NXL-B9-S7u" secondAttribute="bottom" id="oSm-7q-eh6"/>
+                            <constraint firstItem="VY3-uH-Pm6" firstAttribute="leading" secondItem="QlV-QZ-SkL" secondAttribute="leading" id="oUQ-Hn-4JE"/>
                             <constraint firstItem="ayH-sV-Kft" firstAttribute="top" secondItem="p14-hj-c2F" secondAttribute="bottom" constant="16" id="xal-aS-bIx"/>
-                            <constraint firstItem="NXL-B9-S7u" firstAttribute="trailing" secondItem="OHn-R1-igJ" secondAttribute="trailing" id="zhJ-Rb-BIn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NXL-B9-S7u"/>
                     </view>
@@ -305,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPp-eD-cr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2181.5999999999999" y="85.907046476761622"/>
+            <point key="canvasLocation" x="2705" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Pt-lX-RT8">
@@ -328,6 +334,7 @@
     </scenes>
     <resources>
         <image name="pin" width="341" height="400"/>
-        <image name="star-white" width="15" height="14"/>
+        <image name="tab-explore" width="28" height="24"/>
+        <image name="tab-star" width="28" height="24"/>
     </resources>
 </document>

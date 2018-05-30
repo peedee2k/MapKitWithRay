@@ -13,9 +13,7 @@ import SwiftyJSON
 
 class SearchResultController: UIViewController {
     
-    struct SetUp {
-       static let redColour = UIColor(red: 252/255, green: 33/255, blue: 70/255, alpha: 1)
-    }
+    
     
     let cellID = "cellID"
     
@@ -25,58 +23,55 @@ class SearchResultController: UIViewController {
         super.viewDidLoad()
         
         myTableView.showsVerticalScrollIndicator = false
-       // navigationItem.title = "Door Dash"
+        
+        setNavBar()
+        let lat = 41.881832
+        let lng = -87.623177
+        getData(url: "https://api.doordash.com/v1/store_search/", param: ["lat": lat, "lng": lng])
+    
+    }
+    
+    
+    func setNavBar() {
+        // Title Label
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         titleLabel.text = "Door Dash"
         titleLabel.textAlignment = .center
         titleLabel.font = titleLabel.font.withSize(20)
-        titleLabel.textColor = SetUp.redColour
+        titleLabel.textColor = ColorStruct.redColour
         navigationItem.titleView = titleLabel
         
-    
-       
-        
         let searchImage = UIImage(named: "nav-search")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(searchButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = UIColor(red: 252/255, green: 33/255, blue: 70/255, alpha: 1)
-        getData(url: "https://api.doordash.com/v1/store_search/?lat=37.42274&lng=-122.139956")
-       
     }
     
     
-   
-    
-    @objc func searchButtonTapped() {
-        
-    }
     var myresult:JSON = JSON.null
     var dataArray = [RestaurantInfo]()
     var menu = [String]()
-    func getData(url: String) {
-        Alamofire.request(url, method: .get).responseJSON { (response) in
+    func getData(url: String, param: [String: Double]) {
+        Alamofire.request(url, method: .get, parameters: param).responseJSON { (response) in
             if response.result.isSuccess {
                 let data:JSON = JSON(response.result.value!)
-               self.myresult = data
+                self.myresult = data
                 
                 for i in 0..<self.myresult.count {
-                   let result = RestaurantInfo(dict: self.myresult[i])
+                    let result = RestaurantInfo(dict: self.myresult[i])
                     self.dataArray.append(result)
-                    
-                    
                 }
-               
                 DispatchQueue.main.async {
                     self.myTableView.reloadData()
                 }
-                
-            
-                
-                
             }
         }
     }
     
+    
+    
 }
+
+
 extension SearchResultController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,27 +93,24 @@ extension SearchResultController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.deliveryLabel.text = displayCharges
         let delivrytime = (dataArray[indexPath.row].time!)
-        
         var time = ""
         
-        if delivrytime == 0 {
-            time = ""
-        } else {
-            time = "\(dataArray[indexPath.row].time!) min"
-        }
+        if delivrytime == 0 { time = "" }
+        else { time = "\(dataArray[indexPath.row].time!) min" }
         cell.deliveryTime.text = time
+        
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-       
-       
-        performSegue(withIdentifier: "detailVC", sender: self)
+         performSegue(withIdentifier: "detailVC", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailVC" {
             let detailVC = segue.destination as? DetailVC

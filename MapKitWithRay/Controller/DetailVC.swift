@@ -10,11 +10,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-
 class DetailVC: UIViewController {
     
     let cellIDForMenu = "ShowMenu"
-
+    
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var deliveryTimeLabel: UILabel!
     
@@ -22,58 +21,102 @@ class DetailVC: UIViewController {
     
     var restInfo: RestaurantInfo?
     var logo = ""
-   
-    var menuArray = [RestaurantInfo]()
+    
+    
     var catList = [String]()
-   
+    
     @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
         
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.title = restInfo?.restName
-        let image = restInfo?.restImage
-        let url = URL(string: image!)
-       logoImage.downloadedFrom(url: url!)
-        catList = (restInfo?.tags)!
-        let timeleft = restInfo?.time!
-        deliveryTimeLabel.text = ("Delivery in \(timeleft!) min")
+        favButtonSetup()
+        tabBarSetUp()
+        saveFavBtn()
+        setRestValue()
+    }
+    
+    func setRestValue() {
+        guard let image = restInfo?.restImage else { return }
+        
+        guard let url = URL(string: image) else { return }
+        logoImage.downloadedFrom(url: url)
+        
+        guard let timeleft = restInfo?.time! else { return }
+        deliveryTimeLabel.text = ("Delivery in \(timeleft) min")
+        
         guard let id = restInfo?.id else { return }
         
         getMenuData(url: "https://api.doordash.com/v2/restaurant/\(id)/menu/")
     }
     
-     var newResult:JSON = JSON.null
+    func tabBarSetUp() {
+        UITabBar.appearance().tintColor = ColorStruct.redColour
+        tabBarController?.tabBar.isTranslucent = false
+    }
     
+    
+    var newResult:JSON = JSON.null
     
     func getMenuData(url: String) {
-       
-       
+        
+        
         Alamofire.request(url, method: .get).responseJSON { (response) in
             if response.result.isSuccess {
                 let data:JSON = JSON(response.result.value!)
-              
+                
                 self.newResult = data
                 
                 for i in 0..<self.newResult.count {
                     let result = Menu(menuDict: self.newResult[i])
                     self.catList = result.category!
-                   
+                    
                 }
-               
+                
             }
-        
+            
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
-    }
+        }
         
     }
     
-
+    func saveFavBtn() {
+        
+        
+    }
+    
+    func favButtonSetup() {
+        favoriteButton.layer.borderWidth = 3
+        favoriteButton.layer.borderColor = ColorStruct.redColour.cgColor
+        favoriteButton.layer.cornerRadius = 5
+        favoriteButton.layer.masksToBounds = true
+        
+    }
+    
+    @IBAction func favoriteBtnTapped(_ sender: UIButton) {
+    if favoriteButton.titleLabel?.text == "Add to Favorite" {
+        favoriteButton.setImage(UIImage(named: "star-white"), for: .normal)
+        favoriteButton.tintColor = UIColor.white
+        favoriteButton.setTitle("Favorited", for: .normal)
+        favoriteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        favoriteButton.backgroundColor = ColorStruct.redColour
+        favoriteButton.setTitleColor(UIColor.white, for: .normal)
+    } else {
+        favoriteButton.setTitle("Add to Favorite", for: .normal)
+        favoriteButton.setImage(nil, for: .normal)
+        favoriteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        favoriteButton.setTitleColor(UIColor.red, for: .normal)
+        favoriteButton.backgroundColor = UIColor.white
+        }
+        
+    }
+    
+    
 }
 
 extension DetailVC: UITableViewDataSource, UITableViewDelegate {
