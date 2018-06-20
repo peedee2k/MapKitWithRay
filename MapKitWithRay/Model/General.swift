@@ -8,6 +8,8 @@
 
 import UIKit
 
-struct ColorStruct {
+struct General {
     static let redColour = UIColor(red: 252/255, green: 33/255, blue: 70/255, alpha: 1)
+    static let nibCell = "nibCell"
+    static let nibFileName = "CellXIB"
 }

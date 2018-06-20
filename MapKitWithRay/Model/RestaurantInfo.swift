@@ -9,14 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-class RestaurantInfo {
+class RestaurantInfo: Codable {
     let id: Int?
     let restName: String?
     let restType: String?
     let deliveryCharge: Double?
     let restImage: String?
     let time: Int?
-    let tags: [String]?
+   // let tags: [String]?
+    var selectedButton: Bool
     init(dict: JSON) {
         let restID = dict["id"].intValue
         self.id = restID
@@ -31,8 +32,10 @@ class RestaurantInfo {
         self.deliveryCharge = delivery
         let deliveryTime = dict["asap_time"].intValue
         self.time = deliveryTime
-        let menuTags = dict["tags"].arrayObject
-        self.tags = menuTags as? [String]
+  //      let menuTags = dict["tags"].arrayObject
+//        self.tags = menuTags as? [String]
+//        let state = false
+        self.selectedButton = false
     }
     
 }
