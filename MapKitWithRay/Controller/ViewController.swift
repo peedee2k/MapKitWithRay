@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         currentLocation = CLLocation(latitude: 41.878876, longitude: -87.635915)
         
         let regionRedius:CLLocationDistance = 600.0
-        let region = MKCoordinateRegionMakeWithDistance((currentLocation?.coordinate)!, regionRedius, regionRedius)
+        let region = MKCoordinateRegion.init(center: (currentLocation?.coordinate)!, latitudinalMeters: regionRedius, longitudinalMeters: regionRedius)
          myMap.showsUserLocation = true
         myMap.setRegion(region, animated: true)
         
